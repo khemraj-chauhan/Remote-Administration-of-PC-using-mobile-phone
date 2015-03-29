@@ -1,0 +1,11 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function makeitsnow() { ...your snowfall code... }
+    </script>
+</head>
+<body>
+    <button onclick="makeitsnow();">Click</button>
+</body>
+</html>
+

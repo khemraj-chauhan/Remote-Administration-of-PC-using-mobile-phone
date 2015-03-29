@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Cougar : Remote-PC Adminstration</title>
+<script language="JavaScript">
+var asr,asc;
+function point_it(event) {
+pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+document.getElementById("cross").style.left = (pos_x-1) ;
+document.getElementById("cross").style.top = (pos_y-15) ;
+document.getElementById("cross").style.visibility = "visible" ;
+//document.pointform.form_x.value = pos_x;
+//document.pointform.form_y.value = pos_y;
+var textboxtext =document.getElementById("key").value;
+pos_x=pos_x*asr;
+pos_y=pos_y*asc;
+pos_x=Math.ceil(pos_x);
+pos_y=Math.ceil(pos_y);
+//alert(asc);
+var imageSRC = document.getElementById("cross").src = "capture.jpg?"+pos_x+"&"+pos_y;
+}
+function ProcessRequest() 
+{
+}
+</script>
+<script language="JavaScript">
+function loadImage()
+{
+var px=document.getElementById("cross");
+asr=px.naturalWidth/px.width;
+asc=px.naturalHeight/px.height;
+//alert(px.naturalHeight);
+//alert(px.height);
+}
+
+</script>
+<script language="JavaScript">
+function keypress(){
+var textboxtext =document.getElementById("key").value; 	
+var imageSRC = document.getElementById("cross").src = "capture.jpg$"+textboxtext;
+}
+</script>
+
+</head>
+<body>
+<table height="16%" width="100%"  style="background-image:url('header.jpg')">
+<tr height="80%">
+</tr>
+<tr>
+<td width="60%">
+</td>
+<td width="30%">
+<input type="text" id="key" name="here" size="90%">
+</td>
+<td width="10%">
+<button onclick="keypress()">Enter</button> 
+</td>	
+</tr>
+</table>
+<table height="82%" width="100%" border="10" BORDERCOLOR=GREEN>
+<tr height="100%">
+<td width="100%">
+<form name="pointform" method="post">
+<div id="pointer_div" onclick="point_it(event)">
+<img src="capture.jpg" id="cross" width="100%" heigth="100%" onload="loadImage()">
+</div>
+</form>
+</td>
+</tr>
+</table>
+</body>
+</html>
